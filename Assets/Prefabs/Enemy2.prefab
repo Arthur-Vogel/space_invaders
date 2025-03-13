@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1391198326498805885}
   - component: {fileID: 3681182964044956903}
   - component: {fileID: 7492486801724773481}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,8 @@ MonoBehaviour:
   downSpeed: 0.3
   points: 100
   time: 8
+  intensity_of_shot: 1000
+  bullet: {fileID: 2457785739244962049, guid: 936d1532c9cee3b408b55f0fad37db9a, type: 3}
 --- !u!212 &3681182964044956903
 SpriteRenderer:
   m_ObjectHideFlags: 0

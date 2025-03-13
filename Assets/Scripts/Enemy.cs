@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Enemy : MonoBehaviour
     public float downSpeed = 0.75f;
     public int points = 300;
     public float time=10;
+    public int intensity_of_shot = 100000;
+    public GameObject bullet;
+    private int random;
 
     private float decr;
     /*public int type_of_ennemy;
@@ -24,6 +28,13 @@ public class Enemy : MonoBehaviour
     }*/
     private void Update()
     {
+       random = UnityEngine.Random.Range(0, intensity_of_shot);
+       
+      if(random == 1)
+      { 
+        GameObject shot = Instantiate(bullet, transform.position, Quaternion.identity);
+        Destroy(shot, 6f);
+      }
         
       if(_movement == 1)
       {
@@ -58,9 +69,12 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D collision)
     {
-      Debug.Log("Ouch!");
-      Destroy(collision.gameObject);
-      if (OnEnemyDied != null) OnEnemyDied.Invoke( points);
-      Destroy(gameObject);
+      if (collision.gameObject.CompareTag("playerBullet"))
+      {
+        Debug.Log("Ouch!");
+        Destroy(collision.gameObject);
+        if (OnEnemyDied != null) OnEnemyDied.Invoke(points);
+        Destroy(gameObject);
+      }
     }
 }

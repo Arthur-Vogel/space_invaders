@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
         GameObject shot = Instantiate(bullet, shottingOffset.position, Quaternion.identity);
         Debug.Log("Bang!");
 
-        //Destroy(shot, 3f);
+        Destroy(shot, 6f);
 
       }
       moveInput = Input.GetAxisRaw("Horizontal");
